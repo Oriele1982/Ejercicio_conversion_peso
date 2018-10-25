@@ -20,29 +20,30 @@ $(function(){
  
 			var euro  = parseInt(indicador.euro.valor); 
 			console.log(euro);
+
+			var utm = parseInt(indicador.utm.valor); 
+			console.log(utm);
+
+			var uf = parseInt(indicador.uf.valor); 
+			console.log(uf);
 		
-			var peso  = $('#peso').text(1);
+			var peso  = $('#pesocl').text();
 			console.log(peso);
 			var peso  = 1;
 			// console.log(peso);
 
-			var utm1 = parseInt(indicador.UTM.valor); 
-			console.log(utm);
-
-			var uf1 = parseInt(indicador.UF.valor); 
-			console.log(uf);
 
 		//CONVERSION PESO CHILENO A DOLAR - EURO
-		$('#pesocl').on('click', function(event) {
+		$('#pesochile').on('click', function(event) {
  				event.preventDefault(event);
  
- 				var valor_chileno_ingresado = $('#pesocl').val(1);
- 				console.log(valor_chileno_ingresado);
+ 				var valor_peso = $('#peso-dolar').val();
+ 				console.log(valor_peso);
  
- 				var resultado1 = parseInt(valor_chileno_ingresado / dolar);
+ 				var resultado1 = parseInt(valor_peso * dolar);
  				console.log(resultado1);
  
- 				var resultado2 = parseInt(valor_chileno_ingresado / euro);
+ 				var resultado2 = parseInt(valor_peso * euro);
  				console.log(resultado2);
  
  				$('#dolar').text(resultado1);
@@ -52,12 +53,19 @@ $(function(){
 		//CONVERSION PESO INDICADORES
 		$('#indicadores').on('click', function(event) {
 				event.preventDefault(event);
-				var valor_chileno_ingresado = $('#peso-indica').val();
-				console.log(valor_chileno_ingresado);
-				peso = $('#dolar-peso').val();
-				console.log(peso);
-				$('#peso').text(peso * uf)
-			})
+				
+				var valor_peso = $('#peso-indica').val();
+				console.log(valor_peso);
+				
+				var resultado3 = parseInt(valor_peso * uf);
+				console.log(resultado3);
+
+				var resultado4 = parseInt(valor_peso * utm);
+				console.log(resultado3);
+
+				$('#uf').text(resultado3);
+ 				$('#utm').text(resultado4);
+			});
 
 
 
@@ -66,10 +74,10 @@ $(function(){
 		$('#dolarpeso').on('click', function(event) {
 				event.preventDefault(event);
 				var valor_dolar_ingresado = $('#valor_dolar').val();
-				console.log(valor_chileno_ingresado);
+				console.log(valor_dolar_ingresado);
 				peso = $('#dolar-peso').val();
 				console.log(peso);
-				$('#peso').text(peso * dolar)
+				$('#pesocl').text(peso * dolar)
 			})
 
 		})
